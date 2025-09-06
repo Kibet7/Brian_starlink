@@ -513,8 +513,11 @@
         <div class="inquiry">
             <p>In case of inquiry, contact us at:</p>
             <a href="mailto:starrlinkhelp@gmail.com" class="email">email us</a>
-           
-
+            <div>
+                <a href="https://wa.me/254712345678?text=Hello%20Starlink%20Support" class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp us
+                </a>
+            </div>
         </div>
     </div>
 
@@ -549,8 +552,8 @@
                     <p>Your package will be activated automatically after payment confirmation.</p>
                 </div>
                 
-                <button class="proceed-btn" onclick="closeModal()">
-                    <i class="fas fa-check"></i> I Understand
+                <button class="proceed-btn" onclick="simulatePayment()">
+                    <i class="fas fa-check"></i> I've Made the Payment
                 </button>
             </div>
         </div>
@@ -587,7 +590,23 @@
                 }, 2000);
             }).catch(err => {
                 console.error('Failed to copy text: ', err);
+                alert('Failed to copy. Please manually copy the till number: ' + tillNumber);
             });
+        }
+        
+        function simulatePayment() {
+            // Show loading overlay
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            closeModal();
+            
+            // Simulate payment processing
+            setTimeout(() => {
+                // Hide loading overlay after 3 seconds
+                document.getElementById('loadingOverlay').style.display = 'none';
+                
+                // Show success message
+                alert('Payment received! Your package will be activated shortly. Check your email for confirmation.');
+            }, 3000);
         }
         
         // Close modal when clicking outside
@@ -598,4 +617,4 @@
         }
     </script>
 </body>
-                        </html>
+</html>
